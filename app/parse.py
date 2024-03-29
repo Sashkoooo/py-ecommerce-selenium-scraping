@@ -132,31 +132,25 @@ class CSVWriter:
     """Class to write product data to a CSV file"""
     @staticmethod
     def write_to_csv(products: list[Product], file_name: str) -> None:
-        with open(
-                file_name,
-                "w",
-                newline="",
-                encoding="utf-8"
-        ) as csvfile:
-            fieldnames = [
-                "title",
-                "description",
-                "price",
-                "rating",
-                "num_of_reviews",
-            ]
+        fieldnames = [
+            "title",
+            "description",
+            "price",
+            "rating",
+            "num_of_reviews",
+        ]
+        with open(file_name, "w", newline="", encoding="utf-8") as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writeheader()
             for product in products:
-                writer.writerow(
-                    {
-                        "title": product.title,
-                        "description": product.description,
-                        "price": product.price,
-                        "rating": product.rating,
-                        "num_of_reviews": product.num_of_reviews,
-                    }
-                )
+                row = {
+                    "title": product.title,
+                    "description": product.description,
+                    "price": product.price,
+                    "rating": product.rating,
+                    "num_of_reviews": product.num_of_reviews,
+                }
+                writer.writerow(row)
 
 
 def get_all_products() -> None:
