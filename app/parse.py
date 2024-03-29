@@ -67,7 +67,7 @@ class ScrapTestSite:
             print("Accept cookies")
             accept_cookies.click()
         except Exception:
-            pass
+            print("No cookies to accept!")
 
     @staticmethod
     def get_pages() -> dict[str, str]:
